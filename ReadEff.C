@@ -34,10 +34,10 @@ void ReadEff(){
   TEfficiency* hEtaPt;
   TEfficiency* hPt[gNEL];
 
-  TFile* file = TFile::Open("DY_CSA14.root");
+  TFile* file = TFile::Open("../results/DY_CSA14.root");
   file->GetObject("hEta",hEta);
   file->GetObject("hEtaPt",hEtaPt);
-  for (Int_t k = 0; k&lt;gNEL; k++){
+  for (Int_t k = 0; k<gNEL; k++){
     file->GetObject("hPt"+sElectron[k],hPt[k]);
   }
 
@@ -79,7 +79,7 @@ void ReadEff(){
   }
 
   TLegend* leyenda = new TLegend(0.145115,0.681435,0.316092,0.850211,"");
-  for (Int_t k = 2; k &gt; -1; k--){
+  for (Int_t k = 2; k > -1; k--){
     leyenda->AddEntry(hPt[k],sElectron[k]);
     hPt[k]->SetLineColor(Color[k]);
     fun3[k]->SetLineColor(Color[k]);

@@ -19,7 +19,7 @@ void TreeAnalysisTop::Initialise() {
 
   const double EtaBins[8] = {-2.5,-2.,-1.5,-1.,1.,1.5,2.,2.5};
   const double EtaBins2[5] = {0.,1.,1.5,2.,2.5};
-  const double PtBins[3] = {0,100,200};
+  const double PtBins[11] = {0,20,40,60,80,100,120,140,160,180,200};
 
   fHDummy = CreateH1F("fHDummy","",1,0,1);
   fHDummy->TH1::SetDefaultSumw2();
@@ -27,12 +27,12 @@ void TreeAnalysisTop::Initialise() {
   hDeltaPtBad = CreateH1F("hDeltaPtBad","",40,-10,10);
   
   hEta = new TEfficiency("hEta","hEta",7,EtaBins);
-  hEtaPt = new TEfficiency("hEtaPt","hEtaPt",4,EtaBins2,2,PtBins);
+  hEtaPt = new TEfficiency("hEtaPt","hEtaPt",4,EtaBins2,10,PtBins);
   fOutput->Add(hEta);
   fOutput->Add(hEtaPt);
   
   for (Int_t el = 0; el<gNEL; el++){
-    hPt[el]  = new TEfficiency("hPt"+sElectron[el],"hPt"+sElectron[el],2,PtBins);   
+    hPt[el]  = new TEfficiency("hPt"+sElectron[el],"hPt"+sElectron[el],10,PtBins);   
     fOutput->Add(hPt[el]);
   }
   counter = 0;
